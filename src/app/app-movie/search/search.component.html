@@ -22,9 +22,9 @@
 
 <div class="button-row" *ngIf="searchMovieService.totalItems>10">
   <button mat-mini-fab [disabled]="this.searchMovieService.page === 1" (click)="prev()" color="primary">
-    <mat-icon>chevron_left</mat-icon>
+    <mat-icon fontSet="fas" fontIcon="fa-chevron-left"></mat-icon>
   </button>
   <button mat-mini-fab [disabled]="this.searchMovieService.page === this.searchMovieService.totalPages" (click)="next()" color="primary">
-    <mat-icon>chevron_right</mat-icon>
+    <mat-icon fontSet="fas" fontIcon="fa-chevron-right"></mat-icon>
   </button>
 </div>
