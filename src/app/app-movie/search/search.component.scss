@@ -1,0 +1,31 @@
+@import '../../../styles-variables';
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    margin-left: 30px;
+  
+  .example-full-width {
+    width: 80%;
+  }
+
+  @media (max-width: map-get($grid-breakpoints, sm)) {
+      .example-full-width {
+        width: 70%;
+        }
+  }
+
+  @media (max-width: map-get($grid-breakpoints, xs)) {
+    .example-full-width {
+      width: 50%;
+      }
+  }
+}
+
+.button-row{
+    width: 80px;
+    margin: 0 auto;
+    margin-top: 1em;
+    margin-bottom: 2em;
+}

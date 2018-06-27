@@ -1,0 +1,30 @@
+<div class=" row  justify-content-center">
+  <form class="example-form" (ngSubmit)="doSearch(interpellate.value)">
+    <mat-form-field class="example-full-width">
+      <input type="text" placeholder="Enter title of movie" #interpellate aria-label="Number" matInput [formControl]="searchField"
+        [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of searchResult " [value]="option.Title" (click)="doSearch(option.Title)">
+          <b> {{ option.Title }}</b> {{ option.Year }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <button type="submit" mat-button color="primary">Find!</button>
+  </form>
+</div>
+<div class="row  justify-content-center">
+  <p *ngIf="searchMovieService.initialised && searchMovieService.loading" class="lead">Loading...</p>
+  <p *ngIf="searchMovieService.initialised && !searchMovieService.loading && searchMovieService.movies?.length === 0" class="lead">Nothing find</p>
+  <p *ngIf="!searchMovieService.initialised" class="lead">Enter a search string above and press find</p>
+</div>
+
+<ams-movie-list [movies]="searchMovieService.movies"></ams-movie-list>
+
+<div class="button-row" *ngIf="searchMovieService.totalItems>10">
+  <button mat-mini-fab [disabled]="this.searchMovieService.page === 1" (click)="prev()" color="primary">
+    <mat-icon>chevron_left</mat-icon>
+  </button>
+  <button mat-mini-fab [disabled]="this.searchMovieService.page === this.searchMovieService.totalPages" (click)="next()" color="primary">
+    <mat-icon>chevron_right</mat-icon>
+  </button>
+</div>
